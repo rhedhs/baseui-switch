@@ -1,10 +1,11 @@
-// eslint-disable-next-line react/display-name
-import * as React from "react";
-import {Switch as BaseSwitch, SwitchProps} from "@mui/base/Switch";
+import {Switch as BaseSwitch} from "@mui/base/Switch";
 import clsx from "clsx";
 import {resolveSlotProps} from "@/app/components/utils";
+import {SwitchProps} from "@/app/components/Switch/Switch.types";
+import {forwardRef} from "react";
 
-const Switch = React.forwardRef<HTMLSpanElement, SwitchProps>((props, ref) => {
+// eslint-disable-next-line react/display-name
+const Switch = forwardRef<HTMLSpanElement, SwitchProps>((props, ref) => {
     return (
         <BaseSwitch
             ref={ref}
