@@ -5,13 +5,12 @@ import {Switch} from "@/app/components/Switch";
 
 export default function SwitchExample() {
     const { theme, setTheme } = useTheme();
+    const darkModeEnabled = theme === "dark"
     
     return (
         <Switch
-            checked={theme === "dark"}
-            onChange={() => {
-                setTheme(theme ? "dark" : "light");
-            }}
+            checked={darkModeEnabled}
+            onChange={() => setTheme(darkModeEnabled ? "light" : "dark")}
         />
     );
 }

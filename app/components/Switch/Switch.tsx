@@ -6,17 +6,17 @@ import {forwardRef} from "react";
 
 // eslint-disable-next-line react/display-name
 const Switch = forwardRef<HTMLSpanElement, SwitchProps>((props, ref) => {
+    const {slotProps} = props
+    const {root, input, track, thumb} = {...slotProps}
+
     return (
         <BaseSwitch
             ref={ref}
             {...props}
             slotProps={{
-                ...props.slotProps,
+                ...slotProps,
                 root: (ownerState) => {
-                    const resolvedSlotProps = resolveSlotProps(
-                        props.slotProps?.root,
-                        ownerState
-                    );
+                    const resolvedSlotProps = resolveSlotProps(root, ownerState);
 
                     return {
                         ...resolvedSlotProps,
@@ -28,10 +28,7 @@ const Switch = forwardRef<HTMLSpanElement, SwitchProps>((props, ref) => {
                     };
                 },
                 input: (ownerState) => {
-                    const resolvedSlotProps = resolveSlotProps(
-                        props.slotProps?.input,
-                        ownerState
-                    );
+                    const resolvedSlotProps = resolveSlotProps(input, ownerState);
 
                     return {
                         ...resolvedSlotProps,
@@ -42,10 +39,7 @@ const Switch = forwardRef<HTMLSpanElement, SwitchProps>((props, ref) => {
                     };
                 },
                 track: (ownerState) => {
-                    const resolvedSlotProps = resolveSlotProps(
-                        props.slotProps?.track,
-                        ownerState
-                    );
+                    const resolvedSlotProps = resolveSlotProps(track, ownerState);
 
                     return {
                         ...resolvedSlotProps,
@@ -57,15 +51,12 @@ const Switch = forwardRef<HTMLSpanElement, SwitchProps>((props, ref) => {
                     };
                 },
                 thumb: (ownerState) => {
-                    const resolvedSlotProps = resolveSlotProps(
-                        props.slotProps?.thumb,
-                        ownerState
-                    );
+                    const resolvedSlotProps = resolveSlotProps(thumb, ownerState);
 
                     return {
                         ...resolvedSlotProps,
                         className: clsx(
-                            "block w-4 h-4 top-1 rounded-2xl   outline-none border-slate-300 dark:border-gray-700 transition ] relative transition-all duration-200 ease-linear",
+                            "block w-4 h-4 top-1 rounded-2xl outline-none border-slate-300 dark:border-gray-700 transition ] relative transition-all duration-200 ease-linear",
                             ownerState.checked ? "left-[26px] bg-[url('/svg/moon.svg')]": "left-[4px] bg-[url('/svg/sun.svg')]",
                             resolvedSlotProps?.className
                         ),
