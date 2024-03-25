@@ -1,0 +1,1 @@
+export const resolveSlotProps = (fn: any, args: any) =>  typeof fn === "function" ? fn(args) : fn;
